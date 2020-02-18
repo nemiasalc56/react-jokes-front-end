@@ -44,14 +44,19 @@ class App extends Component {
   }
 
   // add login method
-  login = (loginInfo) => {
+  login = async (loginInfo) => {
+    // get the url
+    const url = process.env.REACT_APP_API_URL +'/api/v1/users/login'
+    
+    console.log(loginInfo);
+    
 
     console.log("login method was called");
   }
 
 
   render() {
-    console.log(process.env.REACT_APP_API_URL);
+
     return (
       <div className="App">
         <LoginRegisterForm 

@@ -48,7 +48,10 @@ class LoginRegisterForm extends Component {
 		if(this.state.action === "register") {
 			this.props.register(this.state)
 		} else {
-			this.props.login()
+			this.props.login({
+				username: this.state.username,
+				password: this.state.password
+			})
 		}
 	}
 
