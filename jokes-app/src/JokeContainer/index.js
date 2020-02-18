@@ -49,6 +49,8 @@ class JokeContainer extends Component {
 			<div>
 				<h2>JokeContainer</h2>
 				<JokeList jokes={this.state.jokes}/>
+
+				<NewJokeForm />
 			</div>
 			)
 	}
