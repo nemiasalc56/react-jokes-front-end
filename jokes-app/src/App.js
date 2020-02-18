@@ -86,11 +86,21 @@ class App extends Component {
 
     return (
       <div className="App">
-        
-
         {
           this.state.loggedIn 
-          ? <JokeContainer />
+          ? 
+          <div>
+          <header>
+            <nav>
+              <a href="#">Home</a>|
+              <a href="#">My Jokes</a> |
+              <a href="#">New Joke</a>
+            </nav>
+          </header>
+
+          <JokeContainer />
+            
+          </div>
           :
           <LoginRegisterForm 
           register={this.register}

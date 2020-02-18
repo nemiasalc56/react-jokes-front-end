@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import JokeList from '../JokeList'
+import NewJokeForm from '../NewJokeForm'
 
 
 class JokeContainer extends Component {
