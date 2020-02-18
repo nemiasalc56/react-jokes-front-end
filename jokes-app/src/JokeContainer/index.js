@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 
 class JokeContainer extends Component {
-
+	
 	render() {
 		return (
 			<div>
