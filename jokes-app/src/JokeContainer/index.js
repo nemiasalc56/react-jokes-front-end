@@ -47,7 +47,7 @@ class JokeContainer extends Component {
 		return (
 			<div>
 				<h2>JokeContainer</h2>
-				<JokeList />
+				<JokeList jokes={this.state.jokes}/>
 			</div>
 			)
 	}
