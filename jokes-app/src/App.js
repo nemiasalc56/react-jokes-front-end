@@ -33,10 +33,16 @@ class App extends Component {
         }
       })
       console.log(registerResponse);
-    // conver to json data
+      // conver to json data
       const registerJson = await registerResponse.json()
       console.log(registerJson);
       // added CORS on the back-end because the browser said that we need it
+
+      if(registerResponse.status === 201) {
+        this.setState({
+          loggedIn: true
+        })
+      }
     } catch(err) {
       console.error(err);
     }
@@ -49,7 +55,28 @@ class App extends Component {
     const url = process.env.REACT_APP_API_URL +'/api/v1/users/login'
     
     console.log(loginInfo);
-    
+    try {
+      const loginResponse = await fetch(url, {
+        credentials: 'include',
+        method: 'POST',
+        body: JSON.stringify(loginInfo),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      console.log(loginResponse);
+      const loginJson = loginResponse.json()
+      console.log(loginJson);
+
+      if(loginResponse.status === 200) {
+        this.setState({
+          loggedIn: true
+        })
+      }
+
+    } catch(err) {
+      console.error(err);
+    }
 
     console.log("login method was called");
   }
