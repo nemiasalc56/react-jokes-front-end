@@ -2,6 +2,10 @@ body {
   background-color: rgb(150, 250, 150);
 }
 
+nav {
+	display: flex;
+}
+
 .link {
 	color: blue;
 }

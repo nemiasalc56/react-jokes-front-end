@@ -9,7 +9,8 @@ class JokeContainer extends Component {
 
 		this.state = {
 			jokes: [],
-			addJoke: false
+			addJoke: false,
+			isMyJoke: false
 		}
 	}
 
@@ -61,21 +62,18 @@ class JokeContainer extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log(jokeToAddResponse);
 
 			// get the json data
 			const jokeToAddJson = await jokeToAddResponse.json()
-			console.log(jokeToAddJson.status);
 
 			// this is so that we can the joke that was added showing on the page
 			if(jokeToAddJson.status === 201) {
 				const state = this.state
-				console.log(state);
+
 				state.jokes.push(jokeToAddJson.data)
 				state.addJoke = false
-				console.log(state);
-				this.setState(state)
 
+				this.setState(state)
 			}
 
 		} catch(err) {
@@ -83,14 +81,20 @@ class JokeContainer extends Component {
 		}
 	}
 
+	// get my jokes
+	getMyJokes = async () => {
+
+		console.log("getMyJokes was called");
+	}
+
 	render() {
 		return (
 			<div>
 				<header>
             <nav>
-              <p className="link" >Home</p>|
-              <p className="link" >My Jokes</p> |
-              <p className="link" onClick={()=> this.setState({addJoke: true})}>New Joke</p>
+              <a href="#" className="link" >Home</a>|
+              <a href="#" className="link" onClick={this.getMyJokes}>My Jokes</a> |
+              <a href="#" className="link" onClick={()=> this.setState({addJoke: true})}>New Joke</a>
             </nav>
           </header>
 				<h2>JokeContainer</h2>
