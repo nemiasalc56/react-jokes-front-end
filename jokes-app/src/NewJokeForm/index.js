@@ -10,6 +10,13 @@ class NewJokeForm extends Component {
 		}
 	}
 
+	// allow user to type
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		})
+	}
+
 	render() {
 		return (
 			<div>
@@ -23,6 +30,7 @@ class NewJokeForm extends Component {
 							name="title"
 							value={this.state.title}
 							placeholder="Enter title"
+							onChange={this.handleChange}
 						/>
 					</div>
 
@@ -33,6 +41,7 @@ class NewJokeForm extends Component {
 							name="joke"
 							value={this.state.joke}
 							placeholder="Enter joke"
+							onChange={this.handleChange}
 						/>
 					</div>
 				</form>
