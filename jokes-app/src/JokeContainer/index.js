@@ -44,13 +44,18 @@ class JokeContainer extends Component {
 
 	}
 
+	// create a joke
+	addJoke = (jokeToAdd) => {
+		console.log(jokeToAdd);
+	}
+
 	render() {
 		return (
 			<div>
 				<h2>JokeContainer</h2>
 				<JokeList jokes={this.state.jokes}/>
 
-				<NewJokeForm />
+				<NewJokeForm addJoke={this.addJoke}/>
 			</div>
 			)
 	}

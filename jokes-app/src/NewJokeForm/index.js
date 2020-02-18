@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 class NewJokeForm extends Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 
 		this.state = {
 			title: '',
@@ -20,6 +20,7 @@ class NewJokeForm extends Component {
 	// 
 	handleSubmit = (e) => {
 		e.preventDefault()
+		this.props.addJoke(this.state)
 	}
 
 	render() {
