@@ -13,6 +13,12 @@ class App extends Component {
     }
   }
 
+  // add register method
+  register = (registerInfo) => {
+
+
+    console.log("register in App.js was called");
+  }
 
 
   render() {

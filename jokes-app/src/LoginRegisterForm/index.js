@@ -23,12 +23,18 @@ class LoginRegisterForm extends Component {
 		})
 	}
 
+	handleSubmit = (e) => {
+		e.preventDefault()
+		this.props.register()
+
+	}
+
 	render() {
 		return (
 			<div>
 				<h2>LoginRegisterForm</h2>
 
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<div>
 						<label>First name:</label>
 						<input
