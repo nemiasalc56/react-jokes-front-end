@@ -64,9 +64,19 @@ class JokeContainer extends Component {
 			console.log(jokeToAddResponse);
 
 			// get the json data
-			const jokeToAddJson = jokeToAddResponse.json()
-			console.log(jokeToAddJson);
-			this.setState({addJoke: false})
+			const jokeToAddJson = await jokeToAddResponse.json()
+			console.log(jokeToAddJson.status);
+
+			// this is so that we can the joke that was added showing on the page
+			if(jokeToAddJson.status === 201) {
+				const state = this.state
+				console.log(state);
+				state.jokes.push(jokeToAddJson.data)
+				state.addJoke = false
+				console.log(state);
+				this.setState(state)
+
+			}
 
 		} catch(err) {
 			console.error(err);
@@ -78,16 +88,19 @@ class JokeContainer extends Component {
 			<div>
 				<header>
             <nav>
-              <a className="link" >Home</a>|
-              <a className="link" >My Jokes</a> |
-              <a className="link" onClick={()=> this.setState({addJoke: true})}>New Joke</a>
+              <p className="link" >Home</p>|
+              <p className="link" >My Jokes</p> |
+              <p className="link" onClick={()=> this.setState({addJoke: true})}>New Joke</p>
             </nav>
           </header>
 				<h2>JokeContainer</h2>
 
 				{
 					this.state.addJoke 
-					? <NewJokeForm addJoke={this.addJoke}/>
+					? <NewJokeForm 
+						addJoke={this.addJoke}
+						getJokes={this.getJokes}
+					/>
 					: <JokeList jokes={this.state.jokes}/>
 				}
 
