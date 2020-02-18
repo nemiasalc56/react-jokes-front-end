@@ -8,7 +8,8 @@ class JokeContainer extends Component {
 		super(props)
 
 		this.state = {
-			jokes: []
+			jokes: [],
+			addJoke: false
 		}
 	}
 
@@ -62,22 +63,35 @@ class JokeContainer extends Component {
 			})
 			console.log(jokeToAddResponse);
 
+			// get the json data
 			const jokeToAddJson = jokeToAddResponse.json()
 			console.log(jokeToAddJson);
+			this.setState({addJoke: false})
 
 		} catch(err) {
 			console.error(err);
 		}
-		// get the json data
 	}
 
 	render() {
 		return (
 			<div>
+				<header>
+            <nav>
+              <a className="link" >Home</a>|
+              <a className="link" >My Jokes</a> |
+              <a className="link" onClick={()=> this.setState({addJoke: true})}>New Joke</a>
+            </nav>
+          </header>
 				<h2>JokeContainer</h2>
-				<JokeList jokes={this.state.jokes}/>
 
-				<NewJokeForm addJoke={this.addJoke}/>
+				{
+					this.state.addJoke 
+					? <NewJokeForm addJoke={this.addJoke}/>
+					: <JokeList jokes={this.state.jokes}/>
+				}
+
+				
 			</div>
 			)
 	}

@@ -90,15 +90,8 @@ class App extends Component {
           this.state.loggedIn 
           ? 
           <div>
-          <header>
-            <nav>
-              <a href="#">Home</a>|
-              <a href="#">My Jokes</a> |
-              <a href="#">New Joke</a>
-            </nav>
-          </header>
 
-          <JokeContainer />
+            <JokeContainer />
             
           </div>
           :
