@@ -6,8 +6,8 @@ class LoginRegisterForm extends Component {
 		super(props)
 
 		this.state = {
-			firstName: '',
-			lastName: '',
+			first_name: '',
+			last_name: '',
 			email: '',
 			username: '',
 			password: ''
@@ -16,7 +16,7 @@ class LoginRegisterForm extends Component {
 
 	// register method
 	handleChange = (e) => {
-		console.log(e.target.value);
+
 		// update the info in state
 		this.setState({
 			[e.target.name]: e.target.value
@@ -25,7 +25,7 @@ class LoginRegisterForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		this.props.register()
+		this.props.register(this.state)
 
 	}
 
@@ -39,8 +39,8 @@ class LoginRegisterForm extends Component {
 						<label>First name:</label>
 						<input
 							type="text"
-							name="firstName"
-							value={this.state.firstName}
+							name="first_name"
+							value={this.state.first_name}
 							placeholder="Enter First name"
 							onChange={this.handleChange}
 						/>
@@ -50,8 +50,8 @@ class LoginRegisterForm extends Component {
 						<label>Last name:</label>
 						<input
 							type="text"
-							name="lastName"
-							value={this.state.lastName}
+							name="last_name"
+							value={this.state.last_name}
 							placeholder="Enter lastName"
 							onChange={this.handleChange}
 						/>
