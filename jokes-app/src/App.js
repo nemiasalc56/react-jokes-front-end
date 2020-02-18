@@ -17,7 +17,7 @@ class App extends Component {
   register = async (registerInfo) => {
     console.log("register in App.js was called");
     console.log(registerInfo);
-    
+
     // get the url
     const url = process.env.REACT_APP_API_URL + '/api/v1/users/register'
     
@@ -36,7 +36,7 @@ class App extends Component {
     // conver to json data
       const registerJson = await registerResponse.json()
       console.log(registerJson);
-
+      // added CORS on the back-end because the browser said that we need it
     } catch(err) {
       console.error(err);
     }
