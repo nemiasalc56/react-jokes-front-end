@@ -43,12 +43,21 @@ class App extends Component {
 
   }
 
+  // add login method
+  login = (loginInfo) => {
+
+    console.log("login method was called");
+  }
+
 
   render() {
     console.log(process.env.REACT_APP_API_URL);
     return (
       <div className="App">
-        <LoginRegisterForm register={this.register}/>
+        <LoginRegisterForm 
+          register={this.register}
+          login={this.login}
+        />
 
         {
           this.state.loggedIn 

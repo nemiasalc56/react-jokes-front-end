@@ -10,7 +10,8 @@ class LoginRegisterForm extends Component {
 			last_name: '',
 			email: '',
 			username: '',
-			password: ''
+			password: '',
+			action: 'login'
 		}
 	}
 
@@ -32,41 +33,55 @@ class LoginRegisterForm extends Component {
 	render() {
 		return (
 			<div>
-				<h2>LoginRegisterForm</h2>
+				<h2>
+					{
+						this.state.action === "login"
+						? "Login"
+						: "Register"
+					}
+				</h2>
 
 				<form onSubmit={this.handleSubmit}>
-					<div>
-						<label>First name:</label>
-						<input
-							type="text"
-							name="first_name"
-							value={this.state.first_name}
-							placeholder="Enter First name"
-							onChange={this.handleChange}
-						/>
-					</div>
+					{
+						this.state.action === "register"
+						? 
+						<div>
+							<div>
+								<label>First name:</label>
+								<input
+									type="text"
+									name="first_name"
+									value={this.state.first_name}
+									placeholder="Enter First name"
+									onChange={this.handleChange}
+								/>
+							</div>
 
-					<div>
-						<label>Last name:</label>
-						<input
-							type="text"
-							name="last_name"
-							value={this.state.last_name}
-							placeholder="Enter lastName"
-							onChange={this.handleChange}
-						/>
-					</div>
+							<div>
+								<label>Last name:</label>
+								<input
+									type="text"
+									name="last_name"
+									value={this.state.last_name}
+									placeholder="Enter lastName"
+									onChange={this.handleChange}
+								/>
+							</div>
 
-					<div>
-						<label>Email:</label>
-						<input
-							type="text"
-							name="email"
-							value={this.state.email}
-							placeholder="Enter email"
-							onChange={this.handleChange}
-						/>
-					</div>
+							<div>
+								<label>Email:</label>
+								<input
+									type="text"
+									name="email"
+									value={this.state.email}
+									placeholder="Enter email"
+									onChange={this.handleChange}
+								/>
+							</div>
+							
+						</div>
+						: null
+					}
 
 					<div>
 						<label>Username:</label>
