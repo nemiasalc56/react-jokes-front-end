@@ -86,15 +86,16 @@ class App extends Component {
 
     return (
       <div className="App">
-        <LoginRegisterForm 
-          register={this.register}
-          login={this.login}
-        />
+        
 
         {
           this.state.loggedIn 
           ? <JokeContainer />
-          : null
+          :
+          <LoginRegisterForm 
+          register={this.register}
+          login={this.login}
+          />
           }
         
       </div>
