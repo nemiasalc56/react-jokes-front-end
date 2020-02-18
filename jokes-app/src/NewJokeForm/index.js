@@ -17,12 +17,17 @@ class NewJokeForm extends Component {
 		})
 	}
 
+	// 
+	handleSubmit = (e) => {
+		e.preventDefault()
+	}
+
 	render() {
 		return (
 			<div>
 				<h2>NewJokeForm</h2>
 
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<div>
 						<label>Title:</label>
 						<input
@@ -44,6 +49,7 @@ class NewJokeForm extends Component {
 							onChange={this.handleChange}
 						/>
 					</div>
+					<button type="Submit">Add Joke</button>
 				</form>
 			</div>
 			)
