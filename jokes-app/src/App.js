@@ -14,11 +14,13 @@ class App extends Component {
   }
 
 
+
   render() {
     console.log(process.env);
     return (
       <div className="App">
-        <LoginRegisterForm />
+        <LoginRegisterForm register={this.register}/>
+
         {
           this.state.loggedIn 
           ? <JokeContainer />

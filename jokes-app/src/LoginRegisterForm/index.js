@@ -13,6 +13,16 @@ class LoginRegisterForm extends Component {
 			password: ''
 		}
 	}
+
+	// register method
+	handleChange = (e) => {
+		console.log(e.target.value);
+		// update the info in state
+		this.setState({
+			[e.target.name]: e.target.value
+		})
+	}
+
 	render() {
 		return (
 			<div>
@@ -24,7 +34,9 @@ class LoginRegisterForm extends Component {
 						<input
 							type="text"
 							name="firstName"
+							value={this.state.firstName}
 							placeholder="Enter First name"
+							onChange={this.handleChange}
 						/>
 					</div>
 
@@ -33,7 +45,9 @@ class LoginRegisterForm extends Component {
 						<input
 							type="text"
 							name="lastName"
+							value={this.state.lastName}
 							placeholder="Enter lastName"
+							onChange={this.handleChange}
 						/>
 					</div>
 
@@ -42,7 +56,9 @@ class LoginRegisterForm extends Component {
 						<input
 							type="text"
 							name="email"
+							value={this.state.email}
 							placeholder="Enter email"
+							onChange={this.handleChange}
 						/>
 					</div>
 
@@ -51,7 +67,9 @@ class LoginRegisterForm extends Component {
 						<input
 							type="text"
 							name="username"
+							value={this.state.username}
 							placeholder="Enter username"
+							onChange={this.handleChange}
 						/>
 					</div>
 					
@@ -60,9 +78,12 @@ class LoginRegisterForm extends Component {
 						<input
 							type="password"
 							name="password"
+							value={this.state.password}
 							placeholder="Enter password"
+							onChange={this.handleChange}
 						/>
 					</div>
+					<button type="Submit">Register</button>
 				</form>
 			</div>
 			)
