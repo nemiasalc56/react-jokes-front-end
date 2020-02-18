@@ -26,8 +26,30 @@ class LoginRegisterForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		this.props.register(this.state)
+		this.loginRegister()
+	}
 
+	// switch the form to login or register
+	switchForm = () => {
+		console.log('switch form was called');
+		if(this.state.action === "login") {
+			this.setState({
+				action: "register"
+			})
+		} else {
+			this.setState({
+				action: "login"
+			})
+		}
+	}
+
+	// login or register
+	loginRegister = () => {
+		if(this.state.action === "register") {
+			this.props.register(this.state)
+		} else {
+			this.props.login()
+		}
 	}
 
 	render() {
@@ -104,7 +126,14 @@ class LoginRegisterForm extends Component {
 							onChange={this.handleChange}
 						/>
 					</div>
-					<button type="Submit">Register</button>
+					<button type="Submit">
+						{
+							this.state.action === "login"
+							? "Login"
+							: "Register"
+						}
+					</button>
+					<p onClick={this.switchForm}>Register</p>
 				</form>
 			</div>
 			)
