@@ -10,6 +10,13 @@ class EditJokeForm extends Component {
 		}
 	}
 
+	componentDidMount() {
+		this.setState({
+			title: this.props.jokeToEdit.title,
+			joke: this.props.jokeToEdit.joke
+		})
+	}
+
 	
 	render() {
 		return(

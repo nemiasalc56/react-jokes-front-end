@@ -99,10 +99,11 @@ class JokeContainer extends Component {
 
 	// find the joke to edit
 	editJoke = (idOfJokeToEdit) => {
-
+		// 
 		this.setState({
 			idOfJokeToEdit: idOfJokeToEdit
 		})
+		console.log(this.state);
 
 	}
 
@@ -140,7 +141,9 @@ class JokeContainer extends Component {
 				{
 					this.state.idOfJokeToEdit !== -1
 					?
-					<EditJokeForm />
+					<EditJokeForm 
+						jokeToEdit={this.state.jokes.find((joke) => joke.id === this.state.idOfJokeToEdit)}
+					/>
 					: null
 				}
 				
