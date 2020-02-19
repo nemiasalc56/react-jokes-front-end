@@ -11,7 +11,11 @@ class JokeContainer extends Component {
 		this.state = {
 			jokes: [],
 			addJoke: false,
-			isMyJoke: false
+			isMyJoke: false,
+			jokeToEdit: {
+				title: '',
+				joke: ''
+			}
 		}
 	}
 
@@ -96,6 +100,13 @@ class JokeContainer extends Component {
 
 	}
 
+	// find the joke to edit
+	editJoke = (idOfJokeToEdit) => {
+
+		console.log(idOfJokeToEdit);
+
+	}
+
 	render() {
 		return (
 			<div>
@@ -122,9 +133,14 @@ class JokeContainer extends Component {
 						addJoke={this.addJoke}
 						getJokes={this.getJokes}
 					/>
-					: <JokeList jokes={this.state.jokes}/>
+					: <JokeList 
+						jokes={this.state.jokes}
+						editJoke={this.editJoke}
+					/>
 				}
-				<EditJokeForm />
+				<EditJokeForm 
+
+				/>
 
 				
 			</div>

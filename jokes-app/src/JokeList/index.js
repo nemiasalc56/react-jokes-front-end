@@ -5,9 +5,9 @@ function JokeList(props) {
 	// console.log(props.jokes);
 	const jokes = props.jokes.map((joke) => {
 		return (
-			<div>
-				<li key={joke.id}>{joke.title}</li>
-				<button>Edit</button>
+			<div key={joke.id}>
+				<li>{joke.title}</li>
+				<button onClick={() => props.editJoke(joke.id)}>Edit</button>
 			</div>
 			)
 	})

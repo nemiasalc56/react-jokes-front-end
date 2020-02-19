@@ -9,6 +9,8 @@ class EditJokeForm extends Component {
 			joke: ''
 		}
 	}
+
+	
 	render() {
 		return(
 			<div>
