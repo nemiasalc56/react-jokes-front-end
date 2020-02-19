@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import JokeList from '../JokeList'
 import NewJokeForm from '../NewJokeForm'
 import EditJokeForm from '../EditJokeForm'
+import ShowContainer from '../ShowContainer'
 
 
 class JokeContainer extends Component {
@@ -196,6 +197,7 @@ class JokeContainer extends Component {
 					: null
 				}
 				
+				<ShowContainer />
 
 				
 			</div>
