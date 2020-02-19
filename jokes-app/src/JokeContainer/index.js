@@ -154,6 +154,7 @@ class JokeContainer extends Component {
 	}
 
 	render() {
+		// console.log(this.props.currentUserId);
 		return (
 			<div>
 				<header>
@@ -200,7 +201,10 @@ class JokeContainer extends Component {
 				}
 				{this.state.idOfJokeToShow !==-1
 					?
-					<ShowContainer joke={this.state.jokes.find((joke) => joke.id === this.state.idOfJokeToShow)}/>
+					<ShowContainer 
+						joke={this.state.jokes.find((joke) => joke.id === this.state.idOfJokeToShow)}
+						currentUserId={this.props.currentUserId}
+						/>
 					: null
 
 				}

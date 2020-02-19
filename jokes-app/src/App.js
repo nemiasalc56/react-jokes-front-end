@@ -37,7 +37,7 @@ class App extends Component {
       if(registerResponse.status === 201) {
         this.setState({
           loggedIn: true,
-          currentUserId: loginJson.data.id
+          currentUserId: registerJson.data.id
         })
       }
     } catch(err) {
