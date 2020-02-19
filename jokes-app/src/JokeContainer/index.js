@@ -11,6 +11,7 @@ class JokeContainer extends Component {
 
 		this.state = {
 			jokes: [],
+			idOfJokeToShow: -1,
 			addJoke: false,
 			isMyJoke: false,
 			idOfJokeToEdit: -1
@@ -55,21 +56,9 @@ class JokeContainer extends Component {
 	getOneJoke = async (idOfJokeToShow) => {
 		console.log(idOfJokeToShow);
 
-		try {
-			const url = process.env.REACT_APP_API_URL + '/api/v1/jokes/' + idOfJokeToShow
-			const jokeToShowResponse = await fetch(url, {
-				credentials: 'include',
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			})
-			const jokeToShowJson = await jokeToShowResponse.json()
-			console.log(jokeToShowJson);
-
-		} catch(err) {
-			console.error(err);
-		}	
+		this.setState({
+			idOfJokeToShow: idOfJokeToShow
+		})
 	}
 
 
@@ -196,8 +185,12 @@ class JokeContainer extends Component {
 					/>
 					: null
 				}
-				
-				<ShowContainer />
+				{this.state.idOfJokeToShow !==-1
+					?
+					<ShowContainer jokeToShow={this.state.jokes.find((joke) => joke.id === this.state.idOfJokeToShow)}/>
+					: null
+
+				}
 
 				
 			</div>
