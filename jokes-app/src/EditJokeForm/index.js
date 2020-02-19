@@ -23,13 +23,20 @@ class EditJokeForm extends Component {
 			[e.target.name]: e.target.value
 		})
 	}
+
+	// handle submit
+	handleSubmit = (e) => {
+		e.preventDefault()
+
+		this.props.updateJoke(this.state)
+	}
 	
 	render() {
 		return(
 			<div>
 				<h2>EditJokeForm</h2>
 
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<div>
 						<label>Title:</label>
 						<input
@@ -43,13 +50,13 @@ class EditJokeForm extends Component {
 
 					<div>
 						<label>Joke:</label>
-						<input
+						<textarea
 							type="text"
 							name="joke"
 							value={this.state.joke}
 							placeholder="Enter joke"
 							onChange={this.handleChange}
-						/>
+						></textarea>
 					</div>
 					<button type="Submit">Update Joke</button>
 				</form>

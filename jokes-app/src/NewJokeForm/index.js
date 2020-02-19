@@ -42,13 +42,13 @@ class NewJokeForm extends Component {
 
 					<div>
 						<label>Joke:</label>
-						<input
+						<textarea
 							type="text"
 							name="joke"
 							value={this.state.joke}
 							placeholder="Enter joke"
 							onChange={this.handleChange}
-						/>
+						></textarea>
 					</div>
 					<button type="Submit">Add Joke</button>
 				</form>

@@ -107,6 +107,12 @@ class JokeContainer extends Component {
 
 	}
 
+	// update joke
+	updateJoke = (newJokeInfo) => {
+		console.log("this is newJokeInfo in updateJoke ");
+		console.log(newJokeInfo);
+	}
+
 	render() {
 		return (
 			<div>
@@ -143,6 +149,7 @@ class JokeContainer extends Component {
 					?
 					<EditJokeForm 
 						jokeToEdit={this.state.jokes.find((joke) => joke.id === this.state.idOfJokeToEdit)}
+						updateJoke={this.updateJoke}
 					/>
 					: null
 				}
