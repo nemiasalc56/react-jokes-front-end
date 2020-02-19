@@ -132,8 +132,7 @@ class JokeContainer extends Component {
 
 	// update joke
 	updateJoke = async (newJokeInfo) => {
-		console.log("this is newJokeInfo in updateJoke ");
-		console.log(newJokeInfo);
+	
 		try {
 			// fetch the url with the id of the joke to update
 			const url = process.env.REACT_APP_API_URL + '/api/v1/jokes/' + this.state.idOfJokeToEdit
@@ -145,9 +144,9 @@ class JokeContainer extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log(updateJokeResponse);
+
 			const updateJokeJson = await updateJokeResponse.json()
-			console.log(updateJokeJson);
+
 			if(updateJokeJson.status === 200) {
 				this.setState({
 					idOfJokeToEdit: -1,
@@ -160,8 +159,16 @@ class JokeContainer extends Component {
 		}
 	}
 
+	// delete method
+	deleteJoke = (idOfJokeToDelete) => {
+		console.log("this is idOfJokeToDelete in deleteJoke");
+		console.log(idOfJokeToDelete);
+		// find the joke to delete
+		// delete joke
+	}
+
 	render() {
-		// console.log(this.props.currentUserId);
+		
 		return (
 			<div>
 				<header>
@@ -211,6 +218,7 @@ class JokeContainer extends Component {
 						joke={this.state.jokes.find((joke) => joke.id === this.state.idOfJokeToShow)}
 						currentUserId={this.props.currentUserId}
 						editJoke={this.editJoke}
+						deleteJoke={this.deleteJoke}
 						/>
 					: null
 

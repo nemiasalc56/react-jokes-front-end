@@ -17,7 +17,7 @@ function ShowContainer(props) {
 				?
 				<div>
 					<button onClick={()=> props.editJoke(props.joke.id)}>Edit</button>
-					<button>Delete</button>
+					<button onClick={()=> props.deleteJoke(props.joke.id)}>Delete</button>
 				</div>
 				: null
 			}
