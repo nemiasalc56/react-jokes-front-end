@@ -9,7 +9,8 @@ class App extends Component {
     super()
 
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      currentUserId: -1
     }
   }
 
@@ -32,10 +33,11 @@ class App extends Component {
       // conver to json data
       const registerJson = await registerResponse.json()
       // added CORS on the back-end because the browser said that we need it
-
+      console.log(registerJson);
       if(registerResponse.status === 201) {
         this.setState({
-          loggedIn: true
+          loggedIn: true,
+          currentUserId: loginJson.data.id
         })
       }
     } catch(err) {
@@ -58,21 +60,21 @@ class App extends Component {
           'Content-Type': 'application/json'
         }
       })
-      const loginJson = loginResponse.json()
+      const loginJson = await loginResponse.json()
 
-      if(loginResponse.status === 200) {
+      if(loginJson.status === 200) {
         this.setState({
-          loggedIn: true
+          loggedIn: true,
+          currentUserId: loginJson.data.id
         })
+        
       }
 
     } catch(err) {
       console.error(err);
     }
 
-    console.log("login method was called");
   }
-
 
   render() {
 
@@ -83,7 +85,7 @@ class App extends Component {
           ? 
           <div>
 
-            <JokeContainer />
+            <JokeContainer currentUserId={this.state.currentUserId}/>
             
           </div>
           :

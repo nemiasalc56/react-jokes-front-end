@@ -2,6 +2,10 @@ import React from 'react'
 
 function ShowContainer(props) {
 	console.log(props.joke);
+	console.log(process.env.REACT_APP_API_URL);
+	// find the id of user logged in
+	const url = process.env.REACT_APP_API_URL + '/api/v1/users/loggedId'
+	
 	return(
 		<div>
 			<h2>ShowContainer</h2>

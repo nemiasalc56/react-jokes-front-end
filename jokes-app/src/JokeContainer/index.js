@@ -13,8 +13,11 @@ class JokeContainer extends Component {
 			jokes: [],
 			idOfJokeToShow: -1,
 			addJoke: false,
+			jokeListOpen: true,
+			showJokeOpen: false,
+			editJokeOpen: false,
 			isMyJoke: false,
-			idOfJokeToEdit: -1
+			idOfJokeToEdit: -1,
 		}
 	}
 
@@ -57,7 +60,8 @@ class JokeContainer extends Component {
 		console.log(idOfJokeToShow);
 
 		this.setState({
-			idOfJokeToShow: idOfJokeToShow
+			idOfJokeToShow: idOfJokeToShow,
+			jokeListOpen: false
 		})
 	}
 
@@ -101,7 +105,12 @@ class JokeContainer extends Component {
 	switchJokes = async (e) => {
 		console.log("switchJokes was called");
 		if(e.target.name === "home") {
-			this.setState({isMyJoke: false})
+			this.setState({
+				isMyJoke: false,
+				jokeListOpen: true,
+				editJokeOpen: false,
+				idOfJokeToShow: -1
+			})
 			this.getJokes()
 		} else {
 			this.setState({isMyJoke: true})
@@ -164,17 +173,21 @@ class JokeContainer extends Component {
           </header>
 				<h2>JokeContainer</h2>
 
-				{
-					this.state.addJoke 
+				{this.state.addJoke 
 					? <NewJokeForm 
 						addJoke={this.addJoke}
 						getJokes={this.getJokes}
 					/>
-					: <JokeList 
+					: null
+				}
+				{this.state.jokeListOpen
+					?
+					<JokeList 
 						jokes={this.state.jokes}
 						editJoke={this.editJoke}
 						getOneJoke={this.getOneJoke}
 					/>
+					: null
 				}
 				{
 					this.state.idOfJokeToEdit !== -1
