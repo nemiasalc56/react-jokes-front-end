@@ -15,9 +15,8 @@ class JokeContainer extends Component {
 			addJoke: false,
 			jokeListOpen: true,
 			showJokeOpen: false,
-			editJokeOpen: false,
 			isMyJoke: false,
-			idOfJokeToEdit: -1,
+			idOfJokeToEdit: -1
 		}
 	}
 
@@ -108,7 +107,6 @@ class JokeContainer extends Component {
 			this.setState({
 				isMyJoke: false,
 				jokeListOpen: true,
-				editJokeOpen: false,
 				idOfJokeToShow: -1
 			})
 			this.getJokes()
@@ -146,9 +144,22 @@ class JokeContainer extends Component {
 			})
 
 			const updateJokeJson = await updateJokeResponse.json()
-
+			
+			// reflect changes on the screen
 			if(updateJokeJson.status === 200) {
+				// loop through the jokes
+				const newArrayOfJokes = this.state.jokes.map((joke)=> {
+					// we want to return everything with the updated one
+					if(joke.id === this.state.idOfJokeToEdit) {
+						return updateJokeJson.data
+					} else {
+						return joke
+					}
+
+				})
+				console.log(newArrayOfJokes);
 				this.setState({
+					jokes: newArrayOfJokes,
 					idOfJokeToEdit: -1,
 					jokeListOpen: true
 				})
