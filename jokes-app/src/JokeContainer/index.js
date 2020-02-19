@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import JokeList from '../JokeList'
 import NewJokeForm from '../NewJokeForm'
+import EditJokeForm from '../EditJokeForm'
 
 
 class JokeContainer extends Component {
@@ -123,7 +124,7 @@ class JokeContainer extends Component {
 					/>
 					: <JokeList jokes={this.state.jokes}/>
 				}
-				
+				<EditJokeForm />
 
 				
 			</div>
