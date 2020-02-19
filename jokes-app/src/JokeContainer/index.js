@@ -99,7 +99,7 @@ class JokeContainer extends Component {
 
 	// find the joke to edit
 	editJoke = (idOfJokeToEdit) => {
-		// 
+		
 		this.setState({
 			idOfJokeToEdit: idOfJokeToEdit
 		})

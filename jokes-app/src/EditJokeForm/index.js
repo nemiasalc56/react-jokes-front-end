@@ -17,6 +17,12 @@ class EditJokeForm extends Component {
 		})
 	}
 
+	// handle changes 
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		})
+	}
 	
 	render() {
 		return(
@@ -31,6 +37,7 @@ class EditJokeForm extends Component {
 							name="title"
 							value={this.state.title}
 							placeholder="Enter title"
+							onChange={this.handleChange}
 						/>
 					</div>
 
@@ -41,6 +48,7 @@ class EditJokeForm extends Component {
 							name="joke"
 							value={this.state.joke}
 							placeholder="Enter joke"
+							onChange={this.handleChange}
 						/>
 					</div>
 					<button type="Submit">Update Joke</button>
