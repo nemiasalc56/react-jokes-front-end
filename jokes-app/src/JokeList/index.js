@@ -4,8 +4,6 @@ import React from 'react'
 function JokeList(props) {
 	// console.log(props.jokes);
 	const jokes = props.jokes.map((joke) => {
-		console.log(joke);
-
 		return (
 			<li key={joke.id}>{joke.title}</li>
 			)

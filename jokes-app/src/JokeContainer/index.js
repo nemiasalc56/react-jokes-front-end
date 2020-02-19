@@ -21,9 +21,13 @@ class JokeContainer extends Component {
 
 	// get the jokes
 	getJokes = async () => {
-		console.log("getJokes is getting called");
 		// get the url
-		const url = process.env.REACT_APP_API_URL + '/api/v1/jokes/'
+		let url
+		if(this.state.isMyJoke) {
+			url = process.env.REACT_APP_API_URL + '/api/v1/jokes/mine'
+		} else {
+			url = process.env.REACT_APP_API_URL + '/api/v1/jokes/'
+		}
 		// fetch the url
 		const jokesResponse = await fetch(url, {
 			// include credentials
@@ -34,11 +38,9 @@ class JokeContainer extends Component {
 			}
 		})
 		// we need to add CORS in the backend to have access to this information
-		console.log(jokesResponse);
 
 		// get json
 		const jokesJson = await jokesResponse.json()
-		console.log(jokesJson);
 		// get the jokes in state
 		this.setState({
 			jokes: jokesJson.data
@@ -48,7 +50,6 @@ class JokeContainer extends Component {
 
 	// create a joke
 	addJoke = async (jokeToAdd) => {
-		console.log(jokeToAdd);
 		// get the url
 		const url = process.env.REACT_APP_API_URL + '/api/v1/jokes/'
 
@@ -81,10 +82,17 @@ class JokeContainer extends Component {
 		}
 	}
 
-	// get my jokes
-	getMyJokes = async () => {
+	// get my jokes // chage the name for one more semantic
+	switchJokes = async (e) => {
+		console.log("switchJokes was called");
+		if(e.target.name === "home") {
+			this.setState({isMyJoke: false})
+			this.getJokes()
+		} else {
+			this.setState({isMyJoke: true})
+			this.getJokes()
+		}
 
-		console.log("getMyJokes was called");
 	}
 
 	render() {
@@ -92,9 +100,17 @@ class JokeContainer extends Component {
 			<div>
 				<header>
             <nav>
-              <a href="#" className="link" >Home</a>|
-              <a href="#" className="link" onClick={this.getMyJokes}>My Jokes</a> |
-              <a href="#" className="link" onClick={()=> this.setState({addJoke: true})}>New Joke</a>
+              <a href="#" 
+              		className="link" 
+              		name="home" 
+              		onClick={this.switchJokes}>Home</a>|
+              <a href="#" 
+              		className="link"
+              		name="my jokes"
+              		onClick={this.switchJokes}>My Jokes</a> |
+              <a href="#"
+              		className="link"
+              		onClick={()=> this.setState({addJoke: true})}>New Joke</a>
             </nav>
           </header>
 				<h2>JokeContainer</h2>
@@ -107,6 +123,7 @@ class JokeContainer extends Component {
 					/>
 					: <JokeList jokes={this.state.jokes}/>
 				}
+				
 
 				
 			</div>

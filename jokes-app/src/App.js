@@ -15,9 +15,6 @@ class App extends Component {
 
   // add register method
   register = async (registerInfo) => {
-    console.log("register in App.js was called");
-    console.log(registerInfo);
-
     // get the url
     const url = process.env.REACT_APP_API_URL + '/api/v1/users/register'
     
@@ -32,10 +29,8 @@ class App extends Component {
           'Content-Type': 'application/json'
         }
       })
-      console.log(registerResponse);
       // conver to json data
       const registerJson = await registerResponse.json()
-      console.log(registerJson);
       // added CORS on the back-end because the browser said that we need it
 
       if(registerResponse.status === 201) {
@@ -54,7 +49,6 @@ class App extends Component {
     // get the url
     const url = process.env.REACT_APP_API_URL +'/api/v1/users/login'
     
-    console.log(loginInfo);
     try {
       const loginResponse = await fetch(url, {
         credentials: 'include',
@@ -64,9 +58,7 @@ class App extends Component {
           'Content-Type': 'application/json'
         }
       })
-      console.log(loginResponse);
       const loginJson = loginResponse.json()
-      console.log(loginJson);
 
       if(loginResponse.status === 200) {
         this.setState({
