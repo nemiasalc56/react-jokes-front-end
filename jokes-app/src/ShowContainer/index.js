@@ -2,8 +2,6 @@ import React from 'react'
 
 function ShowContainer(props) {
 	console.log(props.currentUserId)
-	// find the id of user logged in
-	const url = process.env.REACT_APP_API_URL + '/api/v1/users/loggedId'
 	
 	return(
 		<div>
@@ -18,7 +16,7 @@ function ShowContainer(props) {
 				props.currentUserId === props.joke.id
 				?
 				<div>
-					<button>Edit</button>
+					<button onClick={()=> props.editJoke(props.joke.id)}>Edit</button>
 					<button>Delete</button>
 				</div>
 				: null

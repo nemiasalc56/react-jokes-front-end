@@ -123,7 +123,8 @@ class JokeContainer extends Component {
 	editJoke = (idOfJokeToEdit) => {
 		
 		this.setState({
-			idOfJokeToEdit: idOfJokeToEdit
+			idOfJokeToEdit: idOfJokeToEdit,
+			idOfJokeToShow: -1
 		})
 		console.log(this.state);
 
@@ -147,6 +148,12 @@ class JokeContainer extends Component {
 			console.log(updateJokeResponse);
 			const updateJokeJson = await updateJokeResponse.json()
 			console.log(updateJokeJson);
+			if(updateJokeJson.status === 200) {
+				this.setState({
+					idOfJokeToEdit: -1,
+					jokeListOpen: true
+				})
+			}
 
 		} catch(err) {
 			console.error(err);
@@ -185,7 +192,6 @@ class JokeContainer extends Component {
 					?
 					<JokeList 
 						jokes={this.state.jokes}
-						editJoke={this.editJoke}
 						getOneJoke={this.getOneJoke}
 					/>
 					: null
@@ -204,6 +210,7 @@ class JokeContainer extends Component {
 					<ShowContainer 
 						joke={this.state.jokes.find((joke) => joke.id === this.state.idOfJokeToShow)}
 						currentUserId={this.props.currentUserId}
+						editJoke={this.editJoke}
 						/>
 					: null
 
