@@ -2,10 +2,11 @@ import React from 'react'
 
 
 function JokeList(props) {
+
 	const jokes = props.jokes.map((joke) => {
 		return (
 			<div key={joke.id}>
-				<li onClick={() => props.getOneJoke(joke.id)}>{joke.title}</li>
+				<li key={joke.id} onClick={() => props.getOneJoke(joke.id)}>{joke.title}</li>
 			</div>
 			)
 	})

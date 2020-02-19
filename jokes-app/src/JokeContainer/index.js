@@ -160,11 +160,47 @@ class JokeContainer extends Component {
 	}
 
 	// delete method
-	deleteJoke = (idOfJokeToDelete) => {
+	deleteJoke = async (idOfJokeToDelete) => {
 		console.log("this is idOfJokeToDelete in deleteJoke");
-		console.log(idOfJokeToDelete);
+		// console.log(idOfJokeToDelete);
 		// find the joke to delete
 		// delete joke
+		try {
+			// get the url
+			const url = process.env.REACT_APP_API_URL + '/api/v1/jokes/' + idOfJokeToDelete
+			// fetch url
+			const jokeToDeleteResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log(jokeToDeleteResponse);
+			const jokeToDeleteJson = await jokeToDeleteResponse.json()
+			console.log(jokeToDeleteJson);
+
+			// remove the joke from my array of jokes
+			if(jokeToDeleteJson.status === 200) {
+				const jokes = this.state.jokes
+				let index = 0
+				for(let i = 0; i < jokes.length; i++) {
+					if(jokes[i].id === idOfJokeToDelete) {
+						index = i
+					}
+				}
+
+				jokes.splice(index, 1)
+				this.setState({
+					jokes: jokes,
+					jokeListOpen: true,
+					idOfJokeToShow: -1
+				})
+			}
+
+		} catch(err) {
+			console.error(err);
+		}
 	}
 
 	render() {

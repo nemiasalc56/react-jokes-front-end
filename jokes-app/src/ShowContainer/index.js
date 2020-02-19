@@ -13,7 +13,7 @@ function ShowContainer(props) {
 			<p>By: {props.joke.owner.first_name}</p>
 
 			{
-				props.currentUserId === props.joke.id
+				props.currentUserId === props.joke.owner.id
 				?
 				<div>
 					<button onClick={()=> props.editJoke(props.joke.id)}>Edit</button>
