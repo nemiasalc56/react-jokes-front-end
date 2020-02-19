@@ -14,7 +14,15 @@
 	text-align: center;
 }
 
-.button {
+.button-login, .register {
 	text-align: center;
 }
 
+.register {
+	color: blue;
+}
+
+.register:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}

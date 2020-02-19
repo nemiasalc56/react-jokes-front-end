@@ -229,7 +229,11 @@ class JokeContainer extends Component {
               		onClick={this.switchJokes}>My Jokes</a> |
               <a href="#"
               		className="link"
-              		onClick={()=> this.setState({addJoke: true})}>New Joke</a>
+              		onClick={()=> this.setState({
+              			addJoke: true,
+              			jokeListOpen: false,
+              			idOfJokeToShow: -1
+              			})}>New Joke</a>
             </nav>
           </header>
 

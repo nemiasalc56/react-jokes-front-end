@@ -132,8 +132,8 @@ class LoginRegisterForm extends Component {
 								onChange={this.handleChange}
 							/>
 						</div>
-						<div className="button">
-							<Button type="Submit">
+						<div className="button-login">
+							<Button type="Submit" color="green">
 								{
 									this.state.action === "login"
 									? "Login"
@@ -142,7 +142,7 @@ class LoginRegisterForm extends Component {
 							</Button>
 							
 						</div>
-						<p className="button" onClick={this.switchForm}>Register</p>
+						<p className="register" onClick={this.switchForm}>Register</p>
 					</Form>
 				</div>
 			</div>

@@ -1,10 +1,11 @@
 import React from 'react'
+import { Card } from 'semantic-ui-react'
 
 function ShowContainer(props) {
 	console.log(props.currentUserId)
 	
 	return(
-		<div>
+		<Card>
 			<h2>ShowContainer</h2>
 
 			<h3>{props.joke.title}</h3>
@@ -22,7 +23,7 @@ function ShowContainer(props) {
 				: null
 			}
 
-		</div>
+		</Card>
 		)
 }
 

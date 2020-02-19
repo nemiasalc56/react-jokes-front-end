@@ -1,0 +1,17 @@
+.addJoke-container {
+	display: flex;
+	justify-content: center;
+
+}
+
+.addJoke {
+	background-color: white;
+	border-radius: 10px;
+	width: 400px;
+	height: 400px;
+}
+
+.addJoke h2, .button {
+	font-size: 40px;
+	text-align: center;
+}
