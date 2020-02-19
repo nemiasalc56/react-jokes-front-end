@@ -28,12 +28,7 @@ class JokeContainer extends Component {
 	// get the jokes
 	getJokes = async () => {
 		// get the url
-		let url
-		if(this.state.isMyJoke) {
-			url = process.env.REACT_APP_API_URL + '/api/v1/jokes/mine'
-		} else {
-			url = process.env.REACT_APP_API_URL + '/api/v1/jokes/'
-		}
+		const url = process.env.REACT_APP_API_URL + '/api/v1/jokes/'
 		// fetch the url
 		const jokesResponse = await fetch(url, {
 			// include credentials
@@ -247,6 +242,8 @@ class JokeContainer extends Component {
 					<JokeList 
 						jokes={this.state.jokes}
 						getOneJoke={this.getOneJoke}
+						isMyJoke={this.state.isMyJoke}
+						currentUserId={this.props.currentUserId}
 					/>
 					: null
 				}
