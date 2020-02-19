@@ -51,9 +51,24 @@ class JokeContainer extends Component {
 	}
 
 	// show one joke with info
-	getOneJoke = (idOfJokeToShow) => {
+	getOneJoke = async (idOfJokeToShow) => {
 		console.log(idOfJokeToShow);
-		
+
+		try {
+			const url = process.env.REACT_APP_API_URL + '/api/v1/jokes/' + idOfJokeToShow
+			const jokeToShowResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			const jokeToShowJson = await jokeToShowResponse.json()
+			console.log(jokeToShowJson);
+
+		} catch(err) {
+			console.error(err);
+		}	
 	}
 
 
