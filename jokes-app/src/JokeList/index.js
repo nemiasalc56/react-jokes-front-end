@@ -6,8 +6,7 @@ function JokeList(props) {
 	const jokes = props.jokes.map((joke) => {
 		return (
 			<div key={joke.id}>
-				<li>{joke.title}</li>
-				<button onClick={() => props.editJoke(joke.id)}>Edit</button>
+				<li onClick={() => props.getOneJoke(joke.id)}>{joke.title}</li>
 			</div>
 			)
 	})

@@ -50,6 +50,14 @@ class JokeContainer extends Component {
 
 	}
 
+	// show one joke with info
+	getOneJoke = (idOfJokeToShow) => {
+		console.log(idOfJokeToShow);
+		
+	}
+
+
+
 	// create a joke
 	addJoke = async (jokeToAdd) => {
 		// get the url
@@ -160,6 +168,7 @@ class JokeContainer extends Component {
 					: <JokeList 
 						jokes={this.state.jokes}
 						editJoke={this.editJoke}
+						getOneJoke={this.getOneJoke}
 					/>
 				}
 				{
