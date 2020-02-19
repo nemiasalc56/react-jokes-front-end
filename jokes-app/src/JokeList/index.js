@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card } from 'semantic-ui-react'
 
 
 function JokeList(props) {
@@ -12,16 +13,26 @@ function JokeList(props) {
 
 	const jokes = jokesFiltered.map((joke) => {
 		return (
-			<div key={joke.id}>
-				<li key={joke.id} onClick={() => props.getOneJoke(joke.id)}>{joke.title}</li>
-			</div>
+			<Card key={joke.id}>
+				<Card.Content>
+					<Card.Header 
+						className="title"
+						key={joke.id} 
+						onClick={() => props.getOneJoke(joke.id)}>
+						{joke.title}
+					</Card.Header>
+				</Card.Content>
+			</Card>
 			)
 	})
 
 	return(
-		<div>
-			<h2>JokeList</h2>
-			<ul>{jokes}</ul>
+		<div className="joke">
+			<h2>Jokes</h2>
+			<div className="jokeList">
+				<Card.Group>{jokes}</Card.Group>
+			</div>
+			
 		</div>
 		)
 }

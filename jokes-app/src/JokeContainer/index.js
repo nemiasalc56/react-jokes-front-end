@@ -102,11 +102,15 @@ class JokeContainer extends Component {
 			this.setState({
 				isMyJoke: false,
 				jokeListOpen: true,
-				idOfJokeToShow: -1
+				idOfJokeToShow: -1,
+				addJoke: false
 			})
 			this.getJokes()
 		} else {
-			this.setState({isMyJoke: true})
+			this.setState({
+				isMyJoke: true,
+				addJoke: false
+			})
 			this.getJokes()
 		}
 
@@ -228,7 +232,6 @@ class JokeContainer extends Component {
               		onClick={()=> this.setState({addJoke: true})}>New Joke</a>
             </nav>
           </header>
-				<h2>JokeContainer</h2>
 
 				{this.state.addJoke 
 					? <NewJokeForm 

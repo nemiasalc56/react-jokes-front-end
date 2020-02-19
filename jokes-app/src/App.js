@@ -70,6 +70,7 @@ class App extends Component {
         })
         
       }
+      console.log(loginJson);
 
     } catch(err) {
       console.error(err);

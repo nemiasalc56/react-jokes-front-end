@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Button, Form } from 'semantic-ui-react'
+import './index.css'
 
 
 class LoginRegisterForm extends Component {
@@ -57,87 +59,92 @@ class LoginRegisterForm extends Component {
 
 	render() {
 		return (
-			<div>
-				<h2>
-					{
-						this.state.action === "login"
-						? "Login"
-						: "Register"
-					}
-				</h2>
-
-				<form onSubmit={this.handleSubmit}>
-					{
-						this.state.action === "register"
-						? 
-						<div>
-							<div>
-								<label>First name:</label>
-								<input
-									type="text"
-									name="first_name"
-									value={this.state.first_name}
-									placeholder="Enter First name"
-									onChange={this.handleChange}
-								/>
-							</div>
-
-							<div>
-								<label>Last name:</label>
-								<input
-									type="text"
-									name="last_name"
-									value={this.state.last_name}
-									placeholder="Enter lastName"
-									onChange={this.handleChange}
-								/>
-							</div>
-
-							<div>
-								<label>Email:</label>
-								<input
-									type="text"
-									name="email"
-									value={this.state.email}
-									placeholder="Enter email"
-									onChange={this.handleChange}
-								/>
-							</div>
-							
-						</div>
-						: null
-					}
-
-					<div>
-						<label>Username:</label>
-						<input
-							type="text"
-							name="username"
-							value={this.state.username}
-							placeholder="Enter username"
-							onChange={this.handleChange}
-						/>
-					</div>
-					
-					<div>
-						<label>Password:</label>
-						<input
-							type="password"
-							name="password"
-							value={this.state.password}
-							placeholder="Enter password"
-							onChange={this.handleChange}
-						/>
-					</div>
-					<button type="Submit">
+			<div className="login-container">
+				<div className="login">
+					<h2>
 						{
 							this.state.action === "login"
 							? "Login"
 							: "Register"
 						}
-					</button>
-					<p onClick={this.switchForm}>Register</p>
-				</form>
+					</h2>
+
+					<Form onSubmit={this.handleSubmit}>
+						{
+							this.state.action === "register"
+							? 
+							<div>
+								<Form.Field>
+									<label>First name:</label>
+									<input
+										type="text"
+										name="first_name"
+										value={this.state.first_name}
+										placeholder="Enter First name"
+										onChange={this.handleChange}
+									/>
+								</Form.Field>
+
+								<Form.Field>
+									<label>Last name:</label>
+									<input
+										type="text"
+										name="last_name"
+										value={this.state.last_name}
+										placeholder="Enter lastName"
+										onChange={this.handleChange}
+									/>
+								</Form.Field>
+
+								<Form.Field>
+									<label>Email:</label>
+									<input
+										type="text"
+										name="email"
+										value={this.state.email}
+										placeholder="Enter email"
+										onChange={this.handleChange}
+									/>
+								</Form.Field>
+								
+							</div>
+							: null
+						}
+
+						<div>
+							<label>Username:</label>
+							<input
+								type="text"
+								name="username"
+								value={this.state.username}
+								placeholder="Enter username"
+								onChange={this.handleChange}
+							/>
+						</div>
+						
+						<div>
+							<label>Password:</label>
+							<input
+								type="password"
+								name="password"
+								value={this.state.password}
+								placeholder="Enter password"
+								onChange={this.handleChange}
+							/>
+						</div>
+						<div className="button">
+							<Button type="Submit">
+								{
+									this.state.action === "login"
+									? "Login"
+									: "Register"
+								}
+							</Button>
+							
+						</div>
+						<p className="button" onClick={this.switchForm}>Register</p>
+					</Form>
+				</div>
 			</div>
 			)
 	}

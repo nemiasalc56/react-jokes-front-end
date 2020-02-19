@@ -6,6 +6,26 @@ nav {
 	display: flex;
 }
 
+.title {
+	text-transform: capitalize;
+}
+
+.jokeList {
+	display: flex;
+	/*text-align: center;*/
+	justify-content: center;
+}
+
+.joke h2 {
+	text-align: center;
+	font-size: 90px;
+}
+
+.joke  {
+	text-align: center;
+	font-size: 40px;
+}
+
 .link {
 	color: blue;
 }

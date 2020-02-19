@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form } from 'semantic-ui-react'
 
 class NewJokeForm extends Component {
 	constructor(props) {
@@ -28,7 +29,7 @@ class NewJokeForm extends Component {
 			<div>
 				<h2>NewJokeForm</h2>
 
-				<form onSubmit={this.handleSubmit}>
+				<Form onSubmit={this.handleSubmit}>
 					<div>
 						<label>Title:</label>
 						<input
@@ -51,7 +52,7 @@ class NewJokeForm extends Component {
 						></textarea>
 					</div>
 					<button type="Submit">Add Joke</button>
-				</form>
+				</Form>
 			</div>
 			)
 	}
