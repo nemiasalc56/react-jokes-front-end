@@ -108,9 +108,27 @@ class JokeContainer extends Component {
 	}
 
 	// update joke
-	updateJoke = (newJokeInfo) => {
+	updateJoke = async (newJokeInfo) => {
 		console.log("this is newJokeInfo in updateJoke ");
 		console.log(newJokeInfo);
+		try {
+			// fetch the url with the id of the joke to update
+			const url = process.env.REACT_APP_API_URL + '/api/v1/jokes/' + this.state.idOfJokeToEdit
+			const updateJokeResponse = await fetch(url, {
+				credentials: 'include',
+				method: 'PUT',
+				body: JSON.stringify(newJokeInfo),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log(updateJokeResponse);
+			const updateJokeJson = await updateJokeResponse.json()
+			console.log(updateJokeJson);
+
+		} catch(err) {
+			console.error(err);
+		}
 	}
 
 	render() {
