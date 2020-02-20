@@ -34,7 +34,7 @@ class LoginRegisterForm extends Component {
 
 	// switch the form to login or register
 	switchForm = () => {
-		console.log('switch form was called');
+
 		if(this.state.action === "login") {
 			this.setState({
 				action: "register",
@@ -53,18 +53,16 @@ class LoginRegisterForm extends Component {
 	}
 
 	// login or register
-	loginRegister = async () => {
+	loginRegister = () => {
 		if(this.state.action === "register") {
 			this.props.register(this.state)
-			this.showMessage()
 		} else {
-			// using await so that the promise is resolved
-			await this.props.login({
+			// aperantly (await) this is not a good idea
+			this.props.login({
 				username: this.state.username,
 				password: this.state.password
 			})
 			// then run this to update the message on for the user
-			this.showMessage()
 		}
 	}
 
@@ -73,8 +71,17 @@ class LoginRegisterForm extends Component {
 		this.setState({message: this.props.message})
 	}
 
+	// trying to show the updated message on the screen
+	componentDidUpdate(prevProps) {
+		
+		if(this.props.message !== prevProps.message) {
+			this.showMessage()
+		}
+
+	}
+
 	render() {
-		console.log(this.props );
+
 		return (
 			<div className="login-container">
 				<div className="login">

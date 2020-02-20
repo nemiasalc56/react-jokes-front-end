@@ -35,7 +35,7 @@ class App extends Component {
       // conver to json data
       const registerJson = await registerResponse.json()
       // added CORS on the back-end because the browser said that we need it
-
+        
       if(registerResponse.status === 201) {
         this.setState({
           loggedIn: true,

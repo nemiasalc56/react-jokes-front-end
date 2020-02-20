@@ -51,7 +51,6 @@ class JokeContainer extends Component {
 
 	// show one joke with info
 	getOneJoke = async (idOfJokeToShow) => {
-		console.log(idOfJokeToShow);
 
 		this.setState({
 			idOfJokeToShow: idOfJokeToShow,
@@ -98,7 +97,7 @@ class JokeContainer extends Component {
 
 	// get my jokes // chage the name for one more semantic
 	switchJokes = async (e) => {
-		console.log(e.target.name);
+
 		if(e.target.name === "home") {
 			this.setState({
 				isMyJoke: false,
@@ -113,7 +112,6 @@ class JokeContainer extends Component {
 				isMyJoke: true,
 				addJoke: false,
 				idOfJokeToShow: -1,
-				addJoke: false,
 				jokeListOpen: true,
 				idOfJokeToEdit: -1
 			})
@@ -129,8 +127,6 @@ class JokeContainer extends Component {
 			idOfJokeToEdit: idOfJokeToEdit,
 			idOfJokeToShow: -1
 		})
-		console.log(this.state);
-
 	}
 
 	// update joke
@@ -162,7 +158,7 @@ class JokeContainer extends Component {
 					}
 
 				})
-				console.log(newArrayOfJokes);
+
 				this.setState({
 					jokes: newArrayOfJokes,
 					idOfJokeToEdit: -1,
@@ -177,8 +173,6 @@ class JokeContainer extends Component {
 
 	// delete method
 	deleteJoke = async (idOfJokeToDelete) => {
-		console.log("this is idOfJokeToDelete in deleteJoke");
-		// console.log(idOfJokeToDelete);
 		// find the joke to delete
 		// delete joke
 		try {
@@ -192,9 +186,7 @@ class JokeContainer extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log(jokeToDeleteResponse);
 			const jokeToDeleteJson = await jokeToDeleteResponse.json()
-			console.log(jokeToDeleteJson);
 
 			// remove the joke from my array of jokes
 			if(jokeToDeleteJson.status === 200) {
