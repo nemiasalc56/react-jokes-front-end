@@ -13,7 +13,8 @@ class LoginRegisterForm extends Component {
 			email: '',
 			username: '',
 			password: '',
-			action: 'login'
+			action: 'login',
+			message: ''
 		}
 	}
 
@@ -36,7 +37,13 @@ class LoginRegisterForm extends Component {
 		console.log('switch form was called');
 		if(this.state.action === "login") {
 			this.setState({
-				action: "register"
+				action: "register",
+				first_name: '',
+				last_name: '',
+				email: '',
+				username: '',
+				password: '',
+				message: ''
 			})
 		} else {
 			this.setState({
@@ -46,19 +53,28 @@ class LoginRegisterForm extends Component {
 	}
 
 	// login or register
-	loginRegister = () => {
+	loginRegister = async () => {
 		if(this.state.action === "register") {
 			this.props.register(this.state)
+			this.showMessage()
 		} else {
-			this.props.login({
+			// using await so that the promise is resolved
+			await this.props.login({
 				username: this.state.username,
 				password: this.state.password
 			})
+			// then run this to update the message on for the user
+			this.showMessage()
 		}
 	}
 
+	// show the message
+	showMessage = () => {
+		this.setState({message: this.props.message})
+	}
+
 	render() {
-		console.log(this.props.message );
+		console.log(this.props );
 		return (
 			<div className="login-container">
 				<div className="login">
@@ -133,7 +149,7 @@ class LoginRegisterForm extends Component {
 								onChange={this.handleChange}
 							/>
 						</div>
-						<div className="warning"><small>{this.props.message}</small></div>
+						<div className="warning"><small>{this.state.message}</small></div>
 						<div className="button-login">
 							<Button type="Submit" color="green">
 								{

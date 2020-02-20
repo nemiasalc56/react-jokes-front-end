@@ -20,7 +20,7 @@ class App extends Component {
   register = async (registerInfo) => {
     // get the url
     const url = process.env.REACT_APP_API_URL + '/api/v1/users/register'
-    
+
     try {
          // fetch url
       const registerResponse = await fetch(url, {
