@@ -1,0 +1,19 @@
+.show-container {
+	display: flex;
+	justify-content: center;
+}
+
+.show {
+	background-color: white;
+	border-radius: 10px;
+	font-size: 40px;
+}
+
+.show h3 {
+	text-align: center;
+	font-size: 80px;
+}
+
+.button  {
+	justify-content: space-between;
+}

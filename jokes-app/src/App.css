@@ -4,6 +4,12 @@ body {
 
 nav {
 	display: flex;
+	font-size: 20px;
+	margin: auto 20px;
+}
+
+nav a {
+	margin: auto 20px;
 }
 
 .title {
@@ -24,6 +30,7 @@ nav {
 .joke  {
 	text-align: center;
 	font-size: 40px;
+	margin: 20px;
 }
 
 .link {

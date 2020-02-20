@@ -86,6 +86,7 @@ class JokeContainer extends Component {
 
 				state.jokes.push(jokeToAddJson.data)
 				state.addJoke = false
+				state.jokeListOpen = true
 
 				this.setState(state)
 			}
@@ -97,7 +98,7 @@ class JokeContainer extends Component {
 
 	// get my jokes // chage the name for one more semantic
 	switchJokes = async (e) => {
-		console.log("switchJokes was called");
+		console.log(e.target.name);
 		if(e.target.name === "home") {
 			this.setState({
 				isMyJoke: false,
@@ -109,7 +110,10 @@ class JokeContainer extends Component {
 		} else {
 			this.setState({
 				isMyJoke: true,
-				addJoke: false
+				addJoke: false,
+				idOfJokeToShow: -1,
+				addJoke: false,
+				jokeListOpen: true
 			})
 			this.getJokes()
 		}
@@ -218,24 +222,24 @@ class JokeContainer extends Component {
 		return (
 			<div>
 				<header>
-            <nav>
-              <a href="#" 
-              		className="link" 
-              		name="home" 
-              		onClick={this.switchJokes}>Home</a>|
-              <a href="#" 
-              		className="link"
-              		name="my jokes"
-              		onClick={this.switchJokes}>My Jokes</a> |
-              <a href="#"
-              		className="link"
-              		onClick={()=> this.setState({
-              			addJoke: true,
-              			jokeListOpen: false,
-              			idOfJokeToShow: -1
-              			})}>New Joke</a>
-            </nav>
-          </header>
+		            <nav>
+		              <a href="#l"
+		              		className="link"
+		              		name="home" 
+		              		onClick={this.switchJokes}>Home</a>|
+		              <a href="#l"
+		              		className="link"
+		              		name="my-jokes"
+		              		onClick={this.switchJokes}>My Jokes</a> |
+		              <a href="#l"
+		              		className="link"
+		              		onClick={()=> this.setState({
+		              			addJoke: true,
+		              			jokeListOpen: false,
+		              			idOfJokeToShow: -1
+		              			})}>New Joke</a>
+		            </nav>
+          		</header>
 
 				{this.state.addJoke 
 					? <NewJokeForm 

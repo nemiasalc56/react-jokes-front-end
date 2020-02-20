@@ -1,29 +1,35 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Button, Container } from 'semantic-ui-react'
+import './index.css'
 
-function ShowContainer(props) {
-	console.log(props.currentUserId)
-	
+
+function ShowContainer(props) {	
 	return(
-		<Card>
-			<h2>ShowContainer</h2>
+		<div className="show-container">
+			<div className="show">
+				<Container>
+					<div className="show-info">
+						<h3>{props.joke.title}</h3>
+						<p>{props.joke.joke}</p>
+						<p>Date: {props.joke.created_at}</p>
+						<p>By: {props.joke.owner.first_name}</p>
 
-			<h3>{props.joke.title}</h3>
-			<p>{props.joke.joke}</p>
-			<p>Date: {props.joke.created_at}</p>
-			<p>By: {props.joke.owner.first_name}</p>
-
-			{
-				props.currentUserId === props.joke.owner.id
-				?
-				<div>
-					<button onClick={()=> props.editJoke(props.joke.id)}>Edit</button>
-					<button onClick={()=> props.deleteJoke(props.joke.id)}>Delete</button>
-				</div>
-				: null
-			}
-
-		</Card>
+						{
+							props.currentUserId === props.joke.owner.id
+							?
+							<div className="button">
+								<Button onClick={()=> props.editJoke(props.joke.id)}>Edit</Button>
+								<Button color="red" onClick={()=> props.deleteJoke(props.joke.id)}>Delete</Button>
+							</div>
+							: null
+						}
+						
+					</div>
+				</Container>
+				
+			</div>
+			
+		</div>
 		)
 }
 
