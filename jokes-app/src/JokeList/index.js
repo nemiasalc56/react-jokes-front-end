@@ -13,12 +13,12 @@ function JokeList(props) {
 
 	const jokes = jokesFiltered.map((joke) => {
 		return (
-			<Card key={joke.id}>
+			<Card onClick={() => props.getOneJoke(joke.id)} key={joke.id}>
 				<Card.Content>
 					<Card.Header 
 						className="title"
 						key={joke.id} 
-						onClick={() => props.getOneJoke(joke.id)}>
+						>
 						{joke.title}
 					</Card.Header>
 				</Card.Content>

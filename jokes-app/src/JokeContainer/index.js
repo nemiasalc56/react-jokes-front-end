@@ -234,7 +234,8 @@ class JokeContainer extends Component {
 		              <p
 		              		className="link"
 		              		onClick={()=> this.switchJokes("new-joke")}>New Joke</p> |
-		              	<p onClick={this.props.logout}>Logout</p>
+		              	<p 	className="link"
+		              		onClick={this.props.logout}>Logout</p>
 		            </nav>
           		</header>
 

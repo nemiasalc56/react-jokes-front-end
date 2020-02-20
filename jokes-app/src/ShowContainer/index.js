@@ -9,10 +9,12 @@ function ShowContainer(props) {
 			<div className="show">
 				<Container>
 					<div className="show-info">
-						<h3>{props.joke.title}</h3>
+						<h3 className="title">{props.joke.title}</h3>
 						<p className="joke-description">{props.joke.joke}</p>
-						<p>Date: {props.joke.created_at}</p>
-						<p>By: {props.joke.owner.first_name}</p>
+						<div className="author-date">
+							<p>Date: {props.joke.created_at}</p>
+							<p>By: {props.joke.owner.first_name}</p>	
+						</div>
 
 						{
 							props.currentUserId === props.joke.owner.id

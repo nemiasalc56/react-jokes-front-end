@@ -22,3 +22,7 @@
 .joke-description {
 	white-space: pre-line;
 }
+
+.author-date {
+	font-size: 20px;
+}
