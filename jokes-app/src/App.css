@@ -2,6 +2,14 @@ body {
   background-color: rgb(150, 250, 150);
 }
 
+small {
+	color: red;
+}
+
+.warning {
+	text-align: center;
+}
+
 nav {
 	display: flex;
 	font-size: 20px;
@@ -29,7 +37,7 @@ nav a {
 
 .joke  {
 	text-align: center;
-	font-size: 40px;
+	font-size: 20px;
 	margin: 20px;
 }
 

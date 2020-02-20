@@ -1,17 +1,18 @@
-.addJoke-container {
+.edit-container {
 	display: flex;
 	justify-content: center;
-	margin-top: 20px;
+	margin-top: 30px;
+
 }
 
-.addJoke {
+.edit-page {
 	background-color: white;
 	border-radius: 10px;
 	width: 400px;
 	height: 400px;
 }
 
-.addJoke h2, .button {
+.edit-page h2, .button {
 	font-size: 40px;
 	text-align: center;
 }

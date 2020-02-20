@@ -2,7 +2,9 @@
 .login-container {
 	display: flex;
 	flex-direction: column;
+	margin-top: 30px;
 }
+
 .login {
 	background-color: white;
 	width: 500px;

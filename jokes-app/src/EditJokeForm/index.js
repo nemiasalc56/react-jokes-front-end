@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Form, Label, Button } from 'semantic-ui-react'
+import './index.css'
 
 class EditJokeForm extends Component {
 	constructor(props) {
@@ -33,33 +35,39 @@ class EditJokeForm extends Component {
 	
 	render() {
 		return(
-			<div>
-				<h2>EditJokeForm</h2>
+			<div className="edit-container">
+				<div className="edit-page">
+					<h2>Update this joke</h2>
 
-				<form onSubmit={this.handleSubmit}>
-					<div>
-						<label>Title:</label>
-						<input
-							type="text"
-							name="title"
-							value={this.state.title}
-							placeholder="Enter title"
-							onChange={this.handleChange}
-						/>
-					</div>
+					<Form onSubmit={this.handleSubmit}>
+						<div>
+							<Label>Title:</Label>
+							<input
+								type="text"
+								name="title"
+								value={this.state.title}
+								placeholder="Enter title"
+								onChange={this.handleChange}
+							/>
+						</div>
 
-					<div>
-						<label>Joke:</label>
-						<textarea
-							type="text"
-							name="joke"
-							value={this.state.joke}
-							placeholder="Enter joke"
-							onChange={this.handleChange}
-						></textarea>
-					</div>
-					<button type="Submit">Update Joke</button>
-				</form>
+						<div>
+							<Label>Joke:</Label>
+							<textarea
+								type="text"
+								name="joke"
+								value={this.state.joke}
+								placeholder="Enter joke"
+								onChange={this.handleChange}
+							></textarea>
+						</div>
+						<div className="button">
+							<Button color="green" type="Submit">Update Joke</Button>
+							
+						</div>
+					</Form>
+				</div>
+				
 			</div>
 		)
 	}

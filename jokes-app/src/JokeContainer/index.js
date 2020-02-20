@@ -104,7 +104,8 @@ class JokeContainer extends Component {
 				isMyJoke: false,
 				jokeListOpen: true,
 				idOfJokeToShow: -1,
-				addJoke: false
+				addJoke: false,
+				idOfJokeToEdit: -1
 			})
 			this.getJokes()
 		} else {
@@ -113,7 +114,8 @@ class JokeContainer extends Component {
 				addJoke: false,
 				idOfJokeToShow: -1,
 				addJoke: false,
-				jokeListOpen: true
+				jokeListOpen: true,
+				idOfJokeToEdit: -1
 			})
 			this.getJokes()
 		}
@@ -236,8 +238,10 @@ class JokeContainer extends Component {
 		              		onClick={()=> this.setState({
 		              			addJoke: true,
 		              			jokeListOpen: false,
-		              			idOfJokeToShow: -1
-		              			})}>New Joke</a>
+		              			idOfJokeToShow: -1,
+		              			idOfJokeToEdit: -1
+		              			})}>New Joke</a> |
+		              	<a href="#l" onClick={this.props.logout}>Logout</a>
 		            </nav>
           		</header>
 

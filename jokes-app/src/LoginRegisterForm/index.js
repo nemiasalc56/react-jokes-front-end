@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Modal } from 'semantic-ui-react'
 import './index.css'
 
 
@@ -58,6 +58,7 @@ class LoginRegisterForm extends Component {
 	}
 
 	render() {
+		console.log(this.props.message );
 		return (
 			<div className="login-container">
 				<div className="login">
@@ -132,6 +133,7 @@ class LoginRegisterForm extends Component {
 								onChange={this.handleChange}
 							/>
 						</div>
+						<div className="warning"><small>{this.props.message}</small></div>
 						<div className="button-login">
 							<Button type="Submit" color="green">
 								{
@@ -142,7 +144,13 @@ class LoginRegisterForm extends Component {
 							</Button>
 							
 						</div>
-						<p className="register" onClick={this.switchForm}>Register</p>
+						<Modal.Actions>
+							{this.state.action !== "register"
+								?
+								<p className="register" onClick={this.switchForm}>Register</p>
+								: null
+							}
+						</Modal.Actions>
 					</Form>
 				</div>
 			</div>
