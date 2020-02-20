@@ -170,8 +170,8 @@ class LoginRegisterForm extends Component {
 						<Modal.Actions>
 							{this.state.action !== "register"
 								?
-								<p className="register" onClick={this.switchForm}>Register</p>
-								: null
+								<p className="register-login" onClick={this.switchForm}>Register</p>
+								: <p className="register-login" onClick={this.switchForm}>Login</p>
 							}
 						</Modal.Actions>
 					</Form>

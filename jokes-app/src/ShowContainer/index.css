@@ -18,3 +18,7 @@
 .button  {
 	justify-content: space-between;
 }
+
+.joke-description {
+	white-space: pre-line;
+}

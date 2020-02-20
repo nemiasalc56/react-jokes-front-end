@@ -10,7 +10,7 @@ function ShowContainer(props) {
 				<Container>
 					<div className="show-info">
 						<h3>{props.joke.title}</h3>
-						<p>{props.joke.joke}</p>
+						<p className="joke-description">{props.joke.joke}</p>
 						<p>Date: {props.joke.created_at}</p>
 						<p>By: {props.joke.owner.first_name}</p>
 
