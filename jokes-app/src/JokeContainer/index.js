@@ -96,9 +96,9 @@ class JokeContainer extends Component {
 	}
 
 	// get my jokes // chage the name for one more semantic
-	switchJokes = async (e) => {
+	switchJokes = async (name) => {
 
-		if(e.target.name === "home") {
+		if(name === "home") {
 			this.setState({
 				isMyJoke: false,
 				jokeListOpen: true,
@@ -107,7 +107,7 @@ class JokeContainer extends Component {
 				idOfJokeToEdit: -1
 			})
 			this.getJokes()
-		} else {
+		} else if(name === "my-jokes") {
 			this.setState({
 				isMyJoke: true,
 				addJoke: false,
@@ -116,6 +116,13 @@ class JokeContainer extends Component {
 				idOfJokeToEdit: -1
 			})
 			this.getJokes()
+		} else if(name === "new-joke") {
+			this.setState({
+      			addJoke: true,
+      			jokeListOpen: false,
+      			idOfJokeToShow: -1,
+      			idOfJokeToEdit: -1
+      			})
 		}
 
 	}
@@ -217,23 +224,17 @@ class JokeContainer extends Component {
 			<div>
 				<header>
 		            <nav>
-		              <a href="#l"
-		              		className="link"
-		              		name="home" 
-		              		onClick={this.switchJokes}>Home</a>|
-		              <a href="#l"
+		              <p
+		              		className="link" 
+		              		onClick={()=>this.switchJokes("home")}>Home</p>|
+		              <p
 		              		className="link"
 		              		name="my-jokes"
-		              		onClick={this.switchJokes}>My Jokes</a> |
-		              <a href="#l"
+		              		onClick={()=>this.switchJokes("my-jokes")}>My Jokes</p> |
+		              <p
 		              		className="link"
-		              		onClick={()=> this.setState({
-		              			addJoke: true,
-		              			jokeListOpen: false,
-		              			idOfJokeToShow: -1,
-		              			idOfJokeToEdit: -1
-		              			})}>New Joke</a> |
-		              	<a href="#l" onClick={this.props.logout}>Logout</a>
+		              		onClick={()=> this.switchJokes("new-joke")}>New Joke</p> |
+		              	<p onClick={this.props.logout}>Logout</p>
 		            </nav>
           		</header>
 
@@ -263,7 +264,7 @@ class JokeContainer extends Component {
 					/>
 					: null
 				}
-				{this.state.idOfJokeToShow !==-1
+				{this.state.idOfJokeToShow !== -1
 					?
 					<ShowContainer 
 						joke={this.state.jokes.find((joke) => joke.id === this.state.idOfJokeToShow)}
