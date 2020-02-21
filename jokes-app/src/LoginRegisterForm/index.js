@@ -47,7 +47,10 @@ class LoginRegisterForm extends Component {
 			})
 		} else {
 			this.setState({
-				action: "login"
+				action: "login",
+				password: '',
+				message: '',
+				username: ''
 			})
 		}
 	}

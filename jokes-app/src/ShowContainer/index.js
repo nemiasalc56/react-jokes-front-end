@@ -32,7 +32,7 @@ function ShowContainer(props) {
 			</div>
 			
 		</div>
-		)
+	)
 }
 
 

@@ -29,23 +29,29 @@ class JokeContainer extends Component {
 	getJokes = async () => {
 		// get the url
 		const url = process.env.REACT_APP_API_URL + '/api/v1/jokes/'
-		// fetch the url
-		const jokesResponse = await fetch(url, {
-			// include credentials
-			credentials: 'include',
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-		// we need to add CORS in the backend to have access to this information
+		
+		try {
 
-		// get json
-		const jokesJson = await jokesResponse.json()
-		// get the jokes in state
-		this.setState({
-			jokes: jokesJson.data
-		})
+			// fetch the url
+			const jokesResponse = await fetch(url, {
+				// include credentials
+				credentials: 'include',
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			// we need to add CORS in the backend to have access to this information
+
+			// get json
+			const jokesJson = await jokesResponse.json()
+			// get the jokes in state
+			this.setState({
+				jokes: jokesJson.data
+			})
+		} catch(err) {
+			console.error(err);
+		}
 
 	}
 
@@ -95,8 +101,8 @@ class JokeContainer extends Component {
 		}
 	}
 
-	// get my jokes // chage the name for one more semantic
-	switchJokes = async (name) => {
+	// get my jokes // change the name for one more semantic
+	switchJokes = (name) => {
 
 		if(name === "home") {
 			this.setState({

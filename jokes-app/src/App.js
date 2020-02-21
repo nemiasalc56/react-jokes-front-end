@@ -22,7 +22,7 @@ class App extends Component {
     const url = process.env.REACT_APP_API_URL + '/api/v1/users/register'
 
     try {
-         // fetch url
+      // fetch url
       const registerResponse = await fetch(url, {
         // including the credentials
         credentials: 'include',
@@ -35,8 +35,8 @@ class App extends Component {
       // conver to json data
       const registerJson = await registerResponse.json()
       // added CORS on the back-end because the browser said that we need it
-        
-      if(registerResponse.status === 201) {
+
+      if(registerJson.status === 201) {
         this.setState({
           loggedIn: true,
           currentUserId: registerJson.data.id
